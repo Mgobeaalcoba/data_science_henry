@@ -13,4 +13,4 @@ Descripción de variables:
 * IsActiveMember: Si el cliente es un miembro activo (1 = Sí, 0 = No).
 * EstimatedSalary: Salario anual estimado del cliente.
 * Exited: Si el cliente dejó el banco (1 = Sí, 0 = No) – esta es la variable objetivo.
-* 
+  
