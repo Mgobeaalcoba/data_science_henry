@@ -1,0 +1,9 @@
+Empezamos esta clase con un dilema central en el aprendizaje automático: el trade-off entre sesgo y varianza. Entendimos que ningún modelo individual logra un equilibrio perfecto y que, en la práctica, necesitamos estrategias que nos permitan reducir errores y mejorar la capacidad de generalización.
+
+En ese contexto, conocimos a los métodos de ensamble como una solución destacada. Empezamos por Bagging, con su implementación más popular: Random Forest, y vimos cómo la diversidad generada a partir de bootstrap y submuestreo de características permite reducir la varianza y construir modelos más estables.
+
+Luego avanzamos hacia Boosting, con GBDT y XGBoost, aprendiendo cómo el entrenamiento secuencial de modelos que corrigen los errores de sus predecesores permite alcanzar niveles muy altos de precisión, aunque con mayor sensibilidad al sobreajuste si no se controla adecuadamente.
+
+Finalmente, ampliamos la mirada con otros métodos de ensamble como Voting, Stacking y Blending, que ofrecen formas más flexibles de combinar modelos, incluso de distinta naturaleza, permitiendo aprovechar las fortalezas de cada uno.
+
+Los modelos de ensamble nos muestran que, en Machine Learning, no siempre se trata de encontrar un modelo perfecto, sino de coordinar inteligentemente varios modelos imperfectos para obtener un sistema mucho más sólido y confiable. Esta perspectiva colaborativa es, además, una metáfora muy útil para el trabajo profesional en ciencia de datos: el valor no está solo en el desempeño individual, sino en cómo logramos integrar múltiples herramientas y enfoques para resolver problemas complejos.
