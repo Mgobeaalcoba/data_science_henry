@@ -54,3 +54,19 @@ Seleccionar el modelo más adecuado según métricas como RMSE, MAE y MAPE.
 Dataset
 
 Cityscoot Daily rides
+
+¡Vamos a recapitular lo aprendido!
+
+El estudio de las series temporales nos permitió comprender cómo los datos que evolucionan en el tiempo pueden revelar patrones, ritmos y comportamientos que sirven como base para la predicción. A través del caso de CityScoot, exploramos cómo diferentes enfoques permiten anticipar la demanda diaria del servicio, desde métodos estadísticos tradicionales hasta técnicas modernas de aprendizaje automático. Esta clase no solo ofreció herramientas de modelado, sino también una comprensión más profunda sobre cómo el tiempo se convierte en información estratégica para la toma de decisiones.
+
+Entre los aprendizajes más importantes, se destacan cuatro ideas clave:
+
+💡Descomposición e interpretación de la serie temporal. Comprender los componentes de tendencia, estacionalidad y ruido fue el primer paso para interpretar correctamente el comportamiento de la demanda y preparar los datos para el modelado.
+
+💡Comparación entre modelos clásicos y aditivos. Los enfoques ARIMA y SARIMA proporcionaron una base sólida para entender la dependencia temporal, mientras que Prophet introdujo una estructura más flexible y automatizada que facilita la lectura de tendencias y eventos.
+
+💡Forecasting como problema supervisado. Al transformar la serie en un conjunto de features (lags, medias móviles, variables de calendario y regresores externos), se amplió la perspectiva hacia un modelo de aprendizaje supervisado capaz de integrar múltiples fuentes de información.
+
+💡Prevención del data leakage y validación temporal. Se reforzó la importancia de respetar el orden del tiempo en el entrenamiento, demostrando cómo pequeñas fugas de información pueden alterar los resultados y llevar a conclusiones incorrectas sobre el desempeño de un modelo.
+
+En conclusión, esta clase consolidó una visión integral del forecasting: desde el análisis descriptivo de los patrones históricos hasta la construcción de modelos predictivos basados en aprendizaje automático. Aprendiste que predecir no es solo estimar el futuro, sino entender las dinámicas que lo generan, y que la verdadera fortaleza del analista está en saber combinar la precisión del dato con la interpretación del contexto para anticipar decisiones con impacto real.
