@@ -412,7 +412,7 @@ Ver `CONTRIBUTING.md` para más detalles.
 ## 📧 Contacto
 
 **Instructor**: Mariano Gobea  
-**Email**: mariano.gobea@mercadolibre.com  
+**Email**: mariano.gobea@mercadolibre.com / gobeamariano@gmail.com 
 **Consultas**: Usa el sistema de issues del repositorio
 
 ---
