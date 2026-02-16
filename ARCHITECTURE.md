@@ -1,227 +1,329 @@
-# Arquitectura del Proyecto
+# 🏗️ Arquitectura del Proyecto
+## Estructura y Organización del Curso de Data Science
 
-Este documento describe la estructura y organización del curso de Data Science y Machine Learning.
+**Última actualización**: Febrero 2026  
+**Versión**: 1.0.0
 
-## Visión General
+---
 
-El proyecto está organizado para facilitar el aprendizaje progresivo de conceptos de Data Science, desde fundamentos hasta técnicas avanzadas de Deep Learning.
+## 📋 Visión General
 
-## Estructura de Directorios
+El proyecto está organizado para facilitar el aprendizaje progresivo de conceptos de Data Science, desde fundamentos de Machine Learning hasta técnicas avanzadas de Deep Learning.
+
+**Principios de diseño:**
+- ✅ **Modularidad**: Cada clase es independiente pero progresiva
+- ✅ **Consistencia**: Estructura similar en todas las clases
+- ✅ **Practicidad**: Casos reales de negocio
+- ✅ **Reproducibilidad**: Seeds fijas, documentación exhaustiva
+
+---
+
+## 🗂️ Estructura de Directorios REAL
+
+**Nota**: Esta estructura refleja el estado ACTUAL del proyecto post-limpieza (Febrero 2026).
 
 ```
 data_science_henry/
 │
-├── clase_XX_nombre/              # 11 carpetas de clases (01-11)
-│   ├── notebooks/                # Jupyter notebooks
-│   │   ├── 01_concepto.ipynb
-│   │   ├── 02_practica.ipynb
-│   │   └── 03_ejercicios.ipynb
-│   ├── scripts/                  # Scripts Python reutilizables
-│   │   ├── model_utils.py
-│   │   └── data_helpers.py
-│   ├── docs/                     # Documentación y recursos
-│   │   ├── slides.pdf
-│   │   ├── referencias.md
-│   │   └── ejercicios.pdf
-│   ├── data/                     # Datos específicos de la clase
-│   │   ├── dataset.csv
-│   │   └── processed/
-│   └── README.md                 # Descripción de la clase
+├── clase_01_introduccion_ml/
+│   ├── notebooks/                  # 3 notebooks
+│   │   ├── resumen_actividad_clase_01.ipynb
+│   │   ├── actividad_clase_01_eda_retailboost.ipynb
+│   │   └── 02_homework_eda_retailboost.ipynb
+│   ├── scripts/                    # 2 scripts (ÚNICA clase con scripts)
+│   │   ├── preprocessing.py        # Funciones de preprocesamiento
+│   │   └── data_loader.py          # Carga de datos
+│   ├── docs/                       # 3 documentos
+│   │   ├── actividad_clase.md
+│   │   ├── resumen_contenidos.md
+│   │   └── homework.md
+│   ├── data/                       # 5 datasets
+│   │   ├── retailboost_customers.csv
+│   │   ├── retailboost_customers_processed.csv
+│   │   ├── retailboost_customers_procesado.csv
+│   │   └── retailboost_customers_final.csv
+│   └── README.md
 │
-├── data/                         # Datos compartidos entre clases
-│   ├── raw/                      # Datos originales sin procesar
-│   ├── processed/                # Datos procesados y limpios
-│   └── external/                 # Datos de fuentes externas
+├── clase_02_regresion/
+│   ├── notebooks/                  # 3 notebooks
+│   ├── scripts/                    # 1 script
+│   │   └── get_metrics.py          # Métricas de regresión
+│   ├── docs/                       # 3 documentos
+│   ├── data/                       # 1 dataset
+│   └── README.md
 │
-├── utils/                        # Utilidades compartidas
-│   ├── __init__.py               # Exports principales
-│   ├── data_processing.py        # Procesamiento de datos
-│   ├── visualization.py          # Funciones de visualización
-│   └── model_evaluation.py       # Evaluación de modelos
+├── clase_03_regresion_logistica/
+│   ├── notebooks/                  # 2 notebooks
+│   ├── docs/                       # 4 documentos
+│   ├── data/                       # 1 dataset
+│   └── README.md
 │
-├── tests/                        # Tests unitarios
+├── clase_04_clasificacion_metricas/
+│   ├── notebooks/                  # 1 notebook
+│   ├── docs/                       # 2 documentos
+│   └── data/                       # 1 dataset
+│
+├── clase_05_modelos_ensamble/
+│   ├── notebooks/                  # 1 notebook
+│   └── docs/                       # 2 documentos
+│
+├── clase_06_optimizacion_modelos/
+│   ├── notebooks/                  # 3 notebooks
+│   │   ├── 2_GradientBoosting_Optimizacion.ipynb
+│   │   ├── 2_GradientBoosting_Optimizacion_RESUMEN.ipynb
+│   │   └── catboost_info/          # Subdirectorio auxiliar
+│   └── docs/                       # 2 documentos
+│
+├── clase_07_aprendizaje_no_supervisado_i/
+│   ├── notebooks/                  # 2 notebooks
+│   ├── docs/                       # 2 documentos
+│   └── data/                       # 3 datasets
+│
+├── clase_08_aprendizaje_no_supervisado_ii/
+│   ├── notebooks/                  # 2 notebooks + 1 markdown
+│   ├── docs/                       # 2 documentos
+│   └── data/                       # 4 datasets
+│
+├── clase_09_series_temporales/
+│   ├── notebooks/                  # 2 notebooks
+│   ├── docs/                       # 4 documentos
+│   └── data/                       # 1 dataset
+│
+├── clase_10_deep_learning/ ⭐       # CLASE MÁS COMPLETA
+│   ├── notebooks/                  # 4 notebooks + 2 markdown guías
+│   │   ├── homework_vix_lstm_completo_didactico.ipynb ⭐
+│   │   ├── econotrend_lstm_forecast.ipynb
+│   │   ├── finshield_pytorch_dense_Edited_Leo2.ipynb
+│   │   ├── LECTURAS_COMPLETAS_POR_CELDA.md
+│   │   └── CORRECCIONES.md
+│   ├── docs/                       # 7 documentos
+│   │   ├── homework.md
+│   │   ├── resumen_contenidos.md
+│   │   ├── ANALISIS_COMPLETO_VIX_LSTM.md
+│   │   ├── LECTURAS_RECOMENDADAS_VIX_LSTM.md
+│   │   ├── VERIFICACION_AFIRMACIONES_DATOS.md
+│   │   ├── INDICE_RAPIDO.md
+│   │   └── README_ANALISIS_COMPLETO.md
+│   ├── data/                       # 2 datasets
+│   │   ├── econotrend_vix_sim.csv
+│   │   └── finshield_transactions_clean.csv
+│   └── README.md
+│
+├── clase_11_consulta/               # A COMPLETAR
+│   ├── notebooks/                  # Resumen de todo el curso
+│   ├── data/                       # Resumen de datasets y casos
+│   └── README.md
+│
+├── utils/                          # Utilidades compartidas
 │   ├── __init__.py
-│   ├── test_data_processing.py
-│   └── test_model_evaluation.py
+│   ├── data_processing.py
+│   ├── visualization.py
+│   └── model_evaluation.py
 │
-├── docs/                         # Documentación general (opcional)
-│   ├── guias/
-│   └── referencias/
+├── tests/                          # Tests unitarios
+│   ├── __init__.py
+│   └── test_*.py
 │
-├── .env.example                  # Template de variables de entorno
-├── .gitignore                    # Archivos a ignorar en Git
-├── CONTRIBUTING.md               # Guía de contribución
-├── LICENSE                       # Licencia MIT
-├── Makefile                      # Comandos automatizados
-├── QUICKSTART.md                 # Guía de inicio rápido
-├── README.md                     # Documentación principal
-├── pyproject.toml                # Configuración de Poetry
-├── requirements.txt              # Dependencias (backup)
-└── setup.py                      # Instalación del paquete
+├── docs/                           # Documentación general
+│   └── (vacío por ahora)
+│
+├── .venv/                          # Entorno virtual (auto-generado)
+├── .git/                           # Control de versiones
+├── .gitignore                      # Archivos ignorados
+├── .env.example                    # Template de variables
+├── .claude/                        # Configuración de Claude (AI)
+│
+├── README.md                       # Documentación principal
+├── QUICKSTART.md                   # Guía de inicio rápido
+├── ARCHITECTURE.md                 # Este archivo
+├── CONTRIBUTING.md                 # Guía de contribución
+├── LICENSE                         # Licencia MIT
+├── Makefile                        # Comandos automatizados
+├── pyproject.toml                  # Poetry config
+├── poetry.lock                     # Lock file de dependencias
+├── requirements.txt                # Backup para pip
+└── setup.py                        # Instalación como paquete
 ```
 
-## Componentes Principales
+---
 
-### 1. Clases (clase_XX_nombre/)
+## 📊 Estadísticas Actuales
 
-Cada clase sigue una estructura consistente:
+| Métrica | Cantidad |
+|---------|----------|
+| **Total de clases** | 11 |
+| **Notebooks** | 23 |
+| **Datasets únicos** | 20 |
+| **Documentos** | 31 |
+| **Scripts Python** | 3 (clase_01, clase_02) |
+| **Líneas de código** | ~15,000 (notebooks) |
+| **Tamaño total** | ~50 MB (sin .venv) |
 
-#### notebooks/
-- **Propósito**: Material educativo interactivo
-- **Contenido**: Teoría, ejemplos prácticos, ejercicios
-- **Convención de nombres**: `XX_nombre_descriptivo.ipynb`
-- **Orden**: Numérico, desde conceptos básicos a avanzados
+---
 
-#### scripts/
-- **Propósito**: Código reutilizable y modular
-- **Contenido**: Funciones, clases, utilidades
-- **Uso**: Importados en notebooks o ejecutados standalone
-- **Estilo**: PEP 8, type hints, docstrings completos
+## 🎯 Convenciones y Estándares
 
-#### docs/
-- **Propósito**: Material de lectura y referencia
-- **Contenido**: PDFs, markdown, slides, papers
-- **Organización**: Por tema o sesión
+### Nombres de Archivos
 
-#### data/
-- **Propósito**: Datasets específicos de la clase
-- **Contenido**: CSV, JSON, imágenes, etc.
-- **Nota**: Archivos grandes en .gitignore
+**Notebooks:**
+- Formato: `[numero]_[nombre_descriptivo].ipynb`
+- Ejemplos: 
+  - `01_exploratory_data_analysis.ipynb`
+  - `homework_clasificacion_leads.ipynb`
+  - `actividad_clase_03_regresion_logistica.ipynb`
 
-### 2. Datos Compartidos (data/)
+**Scripts:**
+- Formato: `snake_case.py`
+- Ejemplos: `data_loader.py`, `get_metrics.py`, `preprocessing.py`
 
-#### raw/
-- Datos originales sin modificar
-- Nunca se editan directamente
-- Fuente de verdad para procesamiento
+**Documentos:**
+- Formato: `snake_case.md` o `nombre_descriptivo.md`
+- Ejemplos: `homework.md`, `resumen_contenidos.md`, `temas_clase.md`
 
-#### processed/
-- Datos limpios y transformados
-- Listos para modelado
-- Documentar transformaciones aplicadas
+**Datasets:**
+- Formato: `[proyecto]_[entidad]_[estado].csv`
+- Ejemplos: 
+  - `retailboost_customers.csv` (raw)
+  - `retailboost_customers_processed.csv` (procesado)
+  - `finshield_transactions_clean.csv` (limpio)
 
-#### external/
-- Datos de APIs o fuentes externas
-- Pueden requerir credenciales
-- Ver `.env.example`
+### Organización de Notebooks
 
-### 3. Utilidades (utils/)
+**Estructura estándar:**
 
-Módulo de Python con funciones compartidas:
+1. **Título y Contexto** (Markdown)
+2. **Tabla de contenidos** (con anclas)
+3. **Importación de librerías** (Código)
+4. **Configuración** (seeds, parámetros)
+5. **Carga de datos** (Código)
+6. **EDA** (Código + visualizaciones)
+7. **Preprocesamiento** (Código)
+8. **Modelado** (Código)
+9. **Evaluación** (Código + métricas)
+10. **Conclusiones** (Markdown)
 
-#### data_processing.py
-```python
-- load_data()          # Cargar diferentes formatos
-- clean_data()         # Limpieza de datos
-- split_data()         # Train/test split
-- scale_features()     # Escalado de features
-```
+**Best practices:**
+- Celdas de código cortas (<50 líneas)
+- Comentarios explicativos
+- Outputs limpios y relevantes
+- Visualizaciones con títulos y labels
+- Seeds fijas para reproducibilidad
 
-#### visualization.py
-```python
-- plot_confusion_matrix()    # Matriz de confusión
-- plot_roc_curve()           # Curva ROC
-- plot_learning_curves()     # Curvas de aprendizaje
-- plot_feature_importance()  # Importancia de features
-```
+---
 
-#### model_evaluation.py
-```python
-- evaluate_classification()  # Métricas de clasificación
-- evaluate_regression()      # Métricas de regresión
-- cross_validate_model()     # Validación cruzada
-- print_metrics()            # Pretty print de métricas
-```
-
-### 4. Configuración y Gestión
-
-#### pyproject.toml
-- Gestión de dependencias con Poetry
-- Configuración de herramientas (black, isort, pytest)
-- Metadata del proyecto
-
-#### Makefile
-- Automatización de tareas comunes
-- Instalación, testing, formateo
-- Comandos: `make help` para ver todos
-
-#### .env.example
-- Template para variables de entorno
-- NUNCA commitear archivo `.env` real
-- Contiene: paths, API keys, configuraciones
-
-## Flujo de Trabajo
+## 🔄 Flujo de Trabajo
 
 ### Para Estudiantes
 
 ```mermaid
 graph LR
-    A[Leer README] --> B[Estudiar docs/]
-    B --> C[Seguir notebooks/]
+    A[Leer README de la clase] --> B[Estudiar docs/]
+    B --> C[Ejecutar notebooks/]
     C --> D[Experimentar]
-    D --> E[Resolver ejercicios]
-    E --> F[Revisar scripts/]
+    D --> E[Resolver homework]
+    E --> F[Avanzar siguiente clase]
 ```
 
-1. **Preparación**: Leer README de la clase
-2. **Teoría**: Estudiar material en docs/
-3. **Práctica**: Ejecutar notebooks paso a paso
-4. **Experimentación**: Modificar código, probar variaciones
-5. **Ejercicios**: Resolver problemas propuestos
-6. **Profundización**: Analizar scripts/
+**Pasos detallados:**
+
+1. **Preparación** (10 min):
+   - Leer README.md de la clase
+   - Revisar `resumen_contenidos.md` en docs/
+
+2. **Teoría** (30 min):
+   - Estudiar material teórico en docs/
+   - Revisar referencias externas
+
+3. **Práctica** (90 min):
+   - Ejecutar notebooks paso a paso
+   - Leer comentarios y explicaciones
+
+4. **Experimentación** (30 min):
+   - Modificar parámetros
+   - Probar diferentes enfoques
+   - Visualizar resultados
+
+5. **Homework** (60 min):
+   - Resolver ejercicios propuestos
+   - Documentar decisiones
 
 ### Para Instructores
 
 ```mermaid
 graph LR
-    A[Crear contenido] --> B[Organizar en carpetas]
-    B --> C[Documentar]
-    C --> D[Testear notebooks]
+    A[Crear notebooks] --> B[Documentar en docs/]
+    B --> C[Preparar datasets]
+    C --> D[Testear código]
     D --> E[Actualizar README]
+    E --> F[Revisar con estudiantes]
 ```
 
-1. **Desarrollo**: Crear notebooks y scripts
-2. **Organización**: Ubicar en estructura correcta
-3. **Documentación**: Comentarios y docstrings
-4. **Testing**: Ejecutar todo el código
-5. **README**: Actualizar guías de clase
+**Checklist antes de cada clase:**
 
-## Gestión de Dependencias
+- [ ] Notebooks ejecutan sin errores
+- [ ] Outputs limpiados (para Git)
+- [ ] Seeds fijas (reproducibilidad)
+- [ ] Documentación actualizada
+- [ ] Datasets disponibles en data/
+- [ ] README de la clase completo
+- [ ] Homework claramente definido
 
-### Agregar Nueva Librería
+---
+
+## 🛠️ Gestión de Dependencias
+
+### Con Poetry (Recomendado)
 
 ```bash
-# Con Poetry
+# Agregar librería
 poetry add nombre-libreria
 
-# Especificar versión
-poetry add "libreria>=1.0.0"
+# Agregar con versión específica
+poetry add "numpy>=1.26.0,<2.0.0"
 
-# Solo para desarrollo
-poetry add --group dev pytest-mock
-```
+# Agregar para desarrollo (no producción)
+poetry add --group dev pytest-cov
 
-### Actualizar Librerías
-
-```bash
-# Actualizar todas
+# Actualizar todas las dependencias
 poetry update
 
-# Actualizar una específica
-poetry update nombre-libreria
+# Ver árbol de dependencias
+poetry show --tree
+
+# Exportar a requirements.txt
+poetry export -f requirements.txt --output requirements.txt
 ```
 
-## Testing
+### Grupos de Dependencias
+
+**En `pyproject.toml`:**
+
+```toml
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.26.4"
+pandas = "^2.3.3"
+...
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+black = "^24.0.0"
+...
+```
+
+---
+
+## 🧪 Testing y Calidad
 
 ### Estructura de Tests
 
 ```
 tests/
 ├── __init__.py
-├── conftest.py              # Fixtures compartidas
-├── test_data_processing.py  # Tests de procesamiento
-├── test_visualization.py    # Tests de visualización
-└── test_model_evaluation.py # Tests de evaluación
+├── conftest.py                    # Fixtures compartidas
+├── test_data_processing.py        # Tests de utils/data_processing.py
+├── test_visualization.py          # Tests de utils/visualization.py
+└── test_model_evaluation.py       # Tests de utils/model_evaluation.py
 ```
 
 ### Ejecutar Tests
@@ -229,101 +331,475 @@ tests/
 ```bash
 # Todos los tests
 make test
+# o
+poetry run pytest
 
 # Con cobertura
 poetry run pytest --cov=utils --cov-report=html
 
-# Un archivo específico
+# Test específico
 poetry run pytest tests/test_data_processing.py -v
+
+# Con output verbose
+poetry run pytest -vv
 ```
 
-## Versionado
+---
+
+## 🔌 Utilidades Compartidas (utils/)
+
+Módulo de Python con funciones reutilizables entre clases.
+
+### `data_processing.py`
+```python
+def load_data(path, **kwargs) -> pd.DataFrame
+    """Carga datos de diferentes formatos."""
+    
+def clean_data(df) -> pd.DataFrame
+    """Limpieza estándar de datos."""
+    
+def split_temporal(df, test_size=0.2) -> tuple
+    """División respetando orden temporal."""
+    
+def create_sequences(series, lookback=10) -> tuple
+    """Crea ventanas deslizantes para series temporales."""
+```
+
+### `visualization.py`
+```python
+def plot_confusion_matrix(y_true, y_pred, **kwargs)
+    """Matriz de confusión con Seaborn."""
+    
+def plot_roc_curve(y_true, y_proba, **kwargs)
+    """Curva ROC con AUC."""
+    
+def plot_learning_curves(train_scores, test_scores, **kwargs)
+    """Curvas de aprendizaje."""
+    
+def plot_feature_importance(model, feature_names, **kwargs)
+    """Importancia de características."""
+```
+
+### `model_evaluation.py`
+```python
+def evaluate_classification(y_true, y_pred, **kwargs) -> dict
+    """Métricas completas de clasificación."""
+    
+def evaluate_regression(y_true, y_pred, **kwargs) -> dict
+    """Métricas completas de regresión."""
+    
+def cross_validate_model(model, X, y, **kwargs) -> dict
+    """Validación cruzada con múltiples métricas."""
+    
+def print_metrics(metrics, **kwargs)
+    """Pretty print de métricas."""
+```
+
+---
+
+## 📚 Contenido por Clase
+
+### Resumen Ejecutivo
+
+| Clase | Notebooks | Datasets | Scripts | Caso Práctico | Nivel |
+|-------|-----------|----------|---------|---------------|-------|
+| **01** | 3 | 5 | 2 | RetailBoost EDA | Básico |
+| **02** | 3 | 1 | 1 | RetailBoost Regresión | Básico |
+| **03** | 2 | 1 | 0 | Churn Bancario | Intermedio |
+| **04** | 1 | 1 | 0 | Leads Fintech | Intermedio |
+| **05** | 1 | 0 | 0 | Ensambles | Intermedio |
+| **06** | 3 | 0 | 0 | Optimización | Avanzado |
+| **07** | 2 | 3 | 0 | ShopSense Clustering | Intermedio |
+| **08** | 2 | 4 | 0 | ShopSense Recomendaciones | Avanzado |
+| **09** | 2 | 1 | 0 | CityScoot Forecasting | Avanzado |
+| **10** | 4 | 2 | 0 | FinShield + EconoTrend | Avanzado |
+| **11** | 0 | 0 | 0 | Consulta/Repaso | - |
+
+---
+
+## 🎯 Casos Prácticos por Dominio
+
+### **Retail & E-commerce**
+- **RetailBoost** (Clases 01-02): EDA y predicción de valor de cliente
+- **ShopSense** (Clases 07-08): Segmentación y recomendaciones
+
+### **Finanzas & Fintech**
+- **Churn Bancario** (Clase 03): Predicción de abandono de clientes
+- **MarTech** (Clase 04): Clasificación de leads de conversión
+- **EconoTrend** (Clase 10): Predicción del índice VIX (volatilidad)
+- **FinShield** (Clase 10): Detección de fraude transaccional
+
+### **Movilidad**
+- **CityScoot** (Clase 09): Forecasting de demanda de scooters eléctricos
+
+---
+
+## 🏆 Clase Destacada: Deep Learning (Clase 10)
+
+### Características especiales:
+
+**Documentación extensiva** (7 documentos en docs/):
+1. `homework.md` - Consigna del trabajo
+2. `resumen_contenidos.md` - Teoría de Deep Learning
+3. `ANALISIS_COMPLETO_VIX_LSTM.md` - Análisis exhaustivo de resultados (447 líneas)
+4. `LECTURAS_RECOMENDADAS_VIX_LSTM.md` - 30+ recursos organizados (382 líneas)
+5. `VERIFICACION_AFIRMACIONES_DATOS.md` - 87 afirmaciones verificadas (257 líneas)
+6. `INDICE_RAPIDO.md` - Referencia rápida de valores
+7. `README_ANALISIS_COMPLETO.md` - Índice maestro
+
+**Material para instructores** (en notebooks/):
+- `LECTURAS_COMPLETAS_POR_CELDA.md` - Script para comentarios en clase
+- `CORRECCIONES.md` - Soluciones a problemas comunes
+
+**Notebook principal**:
+- `homework_vix_lstm_completo_didactico.ipynb`
+- 3,066 líneas de código y documentación
+- 1.6 MB de contenido didáctico
+- 100% ejecutable de principio a fin
+- Incluye WIKIs, visualizaciones, lecturas recomendadas
+- Basado en datos reales (outputs verificados)
+
+---
+
+## 🔄 Gestión de Versiones
 
 ### Git Workflow
 
 ```bash
 # Feature branch
-git checkout -b feature/nueva-clase
+git checkout -b feature/clase-12-nlp
 
 # Commits descriptivos
-git commit -m "Agrega notebooks de clase 05"
+git add .
+git commit -m "Agrega notebooks de procesamiento de lenguaje natural"
 
-# Push y PR
-git push origin feature/nueva-clase
+# Push
+git push origin feature/clase-12-nlp
 ```
 
 ### Semantic Versioning
 
-- **Major** (1.0.0): Cambios incompatibles
-- **Minor** (0.1.0): Nueva funcionalidad compatible
-- **Patch** (0.0.1): Bug fixes
+- **Major (1.0.0)**: Cambios incompatibles (ej: nueva estructura de carpetas)
+- **Minor (0.1.0)**: Nueva funcionalidad compatible (ej: nueva clase)
+- **Patch (0.0.1)**: Bug fixes y mejoras menores
 
-## Mejores Prácticas
-
-### Notebooks
-
-1. **Estructura clara**
-   - Título descriptivo
-   - Índice de contenidos
-   - Secciones bien definidas
-
-2. **Código limpio**
-   - Celdas no muy largas
-   - Comentarios explicativos
-   - Output relevante
-
-3. **Reproducibilidad**
-   - Establecer random seeds
-   - Documentar versiones
-   - Limpiar outputs antes de commit
-
-### Scripts
-
-1. **Modularidad**
-   - Una función = una responsabilidad
-   - Funciones pequeñas y testeables
-   - Evitar código duplicado
-
-2. **Documentación**
-   - Docstrings completos (Google/NumPy style)
-   - Type hints en firmas
-   - Ejemplos de uso
-
-3. **Manejo de errores**
-   - Validación de inputs
-   - Mensajes de error claros
-   - Logging apropiado
-
-## Escalabilidad
-
-### Agregar Nueva Clase
-
-1. Crear directorio: `clase_XX_nombre/`
-2. Crear subdirectorios: notebooks/, scripts/, docs/, data/
-3. Agregar README.md con estructura estándar
-4. Actualizar README.md principal
-
-### Extender Utilidades
-
-1. Agregar función en módulo apropiado
-2. Actualizar `__init__.py` con export
-3. Agregar tests
-4. Documentar en docstring
-5. Actualizar README si es público
-
-## Recursos
-
-### Documentación Técnica
-- [Poetry Documentation](https://python-poetry.org/docs/)
-- [Jupyter Best Practices](https://jupyter-notebook.readthedocs.io/)
-- [Scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
-
-### Estándares de Código
-- [PEP 8](https://pep8.org/)
-- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
-- [NumPy Docstring Guide](https://numpydoc.readthedocs.io/)
+**Versión actual**: 1.0.0
 
 ---
 
-**Última actualización**: Enero 2026
-**Mantenedor**: Mariano Gobea (mariano.gobea@mercadolibre.com)
+## 📏 Mejores Prácticas
+
+### Notebooks
+
+✅ **SÍ hacer:**
+- Estructura clara con secciones numeradas
+- Tabla de contenidos con anclas (`<a id='seccion'></a>`)
+- Comentarios explicativos en código
+- Celdas cortas (<50 líneas)
+- Seeds fijas (RANDOM_SEED = 42)
+- Outputs relevantes (no todo el DataFrame)
+- Visualizaciones con títulos y labels
+- Conclusiones al final
+
+❌ **NO hacer:**
+- Celdas de 200+ líneas
+- Código sin comentarios
+- Outputs de DataFrames completos (1000+ filas)
+- Variables con nombres ambiguos (df1, df2, x, y)
+- Múltiples versiones del mismo código
+- Magic numbers (usar constantes)
+
+### Scripts
+
+✅ **SÍ hacer:**
+- Docstrings completos (Google/NumPy style)
+- Type hints en firmas de funciones
+- Validación de inputs
+- Manejo de errores con try/except
+- Logging apropiado
+- Tests unitarios
+
+**Ejemplo:**
+
+```python
+def calculate_mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    \"\"\"
+    Calcula el Mean Absolute Error.
+    
+    Args:
+        y_true: Valores reales. Shape: (N,)
+        y_pred: Predicciones. Shape: (N,)
+        
+    Returns:
+        MAE: Error absoluto medio
+        
+    Raises:
+        ValueError: Si los arrays tienen shapes diferentes
+        
+    Example:
+        >>> y_true = np.array([1, 2, 3])
+        >>> y_pred = np.array([1.1, 2.2, 2.9])
+        >>> calculate_mae(y_true, y_pred)
+        0.13333...
+    \"\"\"
+    if y_true.shape != y_pred.shape:
+        raise ValueError(f"Shapes no coinciden: {y_true.shape} vs {y_pred.shape}")
+    
+    return np.mean(np.abs(y_true - y_pred))
+```
+
+### Documentación
+
+**Cada clase debe tener:**
+
+1. **README.md** con:
+   - Objetivos de aprendizaje
+   - Temas cubiertos
+   - Archivos principales
+   - Orden de estudio sugerido
+
+2. **docs/resumen_contenidos.md** con:
+   - Teoría de los temas
+   - Fórmulas y conceptos clave
+   - Referencias y lecturas
+
+3. **docs/homework.md** (si aplica) con:
+   - Consigna clara
+   - Datasets a usar
+   - Criterios de evaluación
+   - Entregables esperados
+
+---
+
+## 🔐 Gestión de Secretos
+
+### Variables de Entorno
+
+**Archivo `.env.example`** (template):
+```bash
+# General
+RANDOM_STATE=42
+N_JOBS=-1
+LOG_LEVEL=INFO
+
+# Paths
+DATA_DIR=./data
+MODELS_DIR=./models
+
+# API Keys (si se usan)
+# KAGGLE_USERNAME=your_username
+# KAGGLE_KEY=your_api_key
+```
+
+**⚠️ NUNCA commitear `.env` real** (incluido en `.gitignore`)
+
+### Datos Sensibles
+
+- Datasets públicos → commit OK
+- Datasets privados → .gitignore + README con instrucciones de descarga
+- API Keys → variables de entorno
+- Contraseñas → NUNCA en código
+
+---
+
+## 🚀 Escalabilidad
+
+### Agregar Nueva Clase
+
+```bash
+# 1. Crear estructura
+mkdir clase_XX_nombre_tema
+cd clase_XX_nombre_tema
+mkdir notebooks docs data
+
+# 2. Crear README
+touch README.md
+
+# 3. Agregar notebooks
+# ... crear notebooks en notebooks/
+
+# 4. Actualizar README.md principal
+# ... agregar la nueva clase a la tabla
+
+# 5. Commit
+git add .
+git commit -m "Agrega clase XX: Nombre del Tema"
+```
+
+### Extender Utilidades (utils/)
+
+1. Agregar función en módulo apropiado
+2. Actualizar `__init__.py` con export
+3. Agregar tests en tests/
+4. Documentar con docstring completo
+5. Actualizar README si es público
+
+---
+
+## 📚 Dependencias Principales
+
+### Core (Production)
+
+```toml
+python = "^3.9"
+numpy = "^1.26.4"
+pandas = "^2.3.3"
+matplotlib = "^3.10.8"
+seaborn = "^0.13.2"
+scikit-learn = "^1.5.2"
+torch = "^2.2.2"
+xgboost = "^2.1.3"
+lightgbm = "^4.5.0"
+catboost = "^1.2.7"
+statsmodels = "^0.14.4"
+optuna = "^4.1.0"
+jupyter = "^1.1.1"
+jupyterlab = "^4.3.4"
+```
+
+### Development
+
+```toml
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+black = "^24.10.0"
+flake8 = "^7.1.1"
+mypy = "^1.13.0"
+ipykernel = "^6.29.5"
+```
+
+**Total de dependencias**: ~50 paquetes (con subdependencias: ~200)
+
+---
+
+## 📊 Casos de Uso de Notebooks
+
+### Por Propósito
+
+| Propósito | Ejemplo | Ubicación |
+|-----------|---------|-----------|
+| **Introducción teórica** | resumen_actividad_clase_01 | clase_01/notebooks |
+| **Actividad en clase** | actividad_clase_02_regresion | clase_02/notebooks |
+| **Homework** | homework_vix_lstm_completo | clase_10/notebooks |
+| **Referencia rápida** | econotrend_lstm_forecast | clase_10/notebooks |
+| **Comparación de modelos** | 2_GradientBoosting_Optimizacion | clase_06/notebooks |
+
+### Por Complejidad
+
+| Nivel | Notebooks | Ejemplos |
+|-------|-----------|----------|
+| **Principiante** | 5 | EDA, Regresión simple |
+| **Intermedio** | 12 | Clasificación, Clustering |
+| **Avanzado** | 6 | Series temporales, Deep Learning |
+
+---
+
+## 🌐 Recursos Externos
+
+### Documentación Oficial
+- [Scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
+- [PyTorch Tutorials](https://pytorch.org/tutorials/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- [Statsmodels Documentation](https://www.statsmodels.org/)
+
+### Papers Fundamentales
+- Hochreiter & Schmidhuber (1997): "Long Short-Term Memory"
+- Breiman (2001): "Random Forests"
+- Chen & Guestrin (2016): "XGBoost: A Scalable Tree Boosting System"
+
+### Cursos Complementarios
+- [Fast.ai Practical Deep Learning](https://www.fast.ai/)
+- [Andrew Ng - Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)
+- [PyTorch Official Course](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
+
+---
+
+## 🎓 Habilidades Adquiridas
+
+Al completar este curso, dominarás:
+
+✅ **Fundamentos de ML**: Supervisado, no supervisado, validación  
+✅ **Regresión y Clasificación**: Modelos lineales y no lineales  
+✅ **Ensambles**: Bagging, Boosting, Stacking  
+✅ **Optimización**: Grid Search, Random Search, Optuna  
+✅ **Clustering**: K-Means, DBSCAN, Hierarchical  
+✅ **Recomendaciones**: Filtrado colaborativo y basado en contenido  
+✅ **Series Temporales**: ARIMA, Prophet, ML para forecasting  
+✅ **Deep Learning**: Redes densas, LSTM en PyTorch  
+✅ **Interpretabilidad**: SHAP, LIME, feature importance  
+✅ **Mejores prácticas**: Reproducibilidad, documentación, testing
+
+---
+
+## 🤝 Contribución
+
+### Cómo Contribuir
+
+1. Fork el repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-clase`)
+3. Commit tus cambios (`git commit -m 'Agrega clase XX'`)
+4. Push a la rama (`git push origin feature/nueva-clase`)
+5. Abre un Pull Request
+
+Ver `CONTRIBUTING.md` para guía completa.
+
+### Qué Contribuir
+
+- ✅ Nuevos notebooks de ejemplos
+- ✅ Datasets adicionales
+- ✅ Mejoras en documentación
+- ✅ Correcciones de errores
+- ✅ Casos de uso adicionales
+- ✅ Scripts de utilidades
+
+---
+
+## 📞 Soporte y Contacto
+
+**Instructor**: Mariano Gobea  
+**Email**: mariano.gobea@mercadolibre.com  
+**Issues**: [GitHub Issues](https://github.com/tu-repo/data_science_henry/issues)
+
+**Clase de consulta**: Lunes próximo (Clase 11)
+
+---
+
+## 📜 Licencia
+
+Este proyecto educativo está bajo la **Licencia MIT**.
+
+```
+Copyright (c) 2026 Mariano Gobea
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+```
+
+Ver archivo `LICENSE` para el texto completo.
+
+---
+
+## 🎉 ¡Comienza Ya!
+
+```bash
+# 1. Clona o navega al proyecto
+cd data_science_henry
+
+# 2. Instala dependencias
+poetry install
+
+# 3. Activa entorno
+poetry shell
+
+# 4. Abre tu primer notebook
+jupyter lab clase_01_introduccion_ml/notebooks/resumen_actividad_clase_01.ipynb
+```
+
+---
+
+**Última actualización**: Febrero 16, 2026  
+**Mantenedor**: Mariano Gobea  
+**Versión**: 1.0.0
+
+🚀 **¡Éxito en tu aprendizaje!**
