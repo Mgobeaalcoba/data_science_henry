@@ -1,0 +1,346 @@
+---
+alwaysApply: true
+priority: critical
+type: custom-rule
+---
+# MercadoLibre MCP Authority-First Development Rule
+
+This rule enforces mandatory consultation of three configured MCP servers before providing any implementation guidance. These MCPs serve as single sources of truth for Fury platform services, API specifications, and code quality.
+
+**Pre-configured MCPs (from default-mcps.json):**
+- `backend` — MCP namespace grouping Fury platform services (fury_for_development, kvs, os, secrets, bigqueue)
+- `genai_code_review` — Automated code review and analysis
+- `ApplicationSecurityMCP` — Application security and code quality scanning
+
+---
+
+## 🚨 CRITICAL: MANDATORY MCP CONSULTATION
+
+### NEVER provide guidance without MCP consultation for:
+1. **Fury Services** → Must use `mcp__fury__search_sdk_docs`
+2. **API Documentation** → Must use `mcp__fury__search_api_docs`
+3. **MCP Discovery** → Must use `mcp__fury__find_mcp_server`
+4. **Code Reviews** → Must use `mcp__genai_code_review__code_review_instructions` or `pr_review_search`
+5. **Security Scanning** → Must use `mcp__meli_appsec_codeguard__*` tools
+---
+
+## 🎯 BACKEND NAMESPACE (MCP Gateway)
+
+The `backend` namespace is a **proxy grouper** that provides unified access to multiple Fury-related MCPs:
+- **fury_for_development** — Fury platform documentation and MCP discovery
+- **kvs** — Key-Value Store service
+- **os** — Object Storage service
+- **bigqueue** — Big queue service
+- **secrets** — Secrets service
+
+
+### Tool 1: `search_sdk_docs` - SDK Documentation (from fury_for_development)
+**MANDATORY for any Fury service implementation:**
+
+**Trigger Keywords:**
+- kvs, key-value store, bigqueue, message queue, mq
+- object storage, os, document search, ds
+- streaming, stream, workqueue, locks, sequence
+- core library, fury sdk, client setup, batch operations
+
+**Required Parameters:**
+- `service`: kvs | bigqueue | os | ds | stream | workqueue | locks | sequence | core
+- `language`: java | go | python | typescript
+- `query`: specific implementation question
+
+**Usage Pattern:**
+```
+User asks about KVS →
+MUST call mcp__fury__search_sdk_docs(service="kvs", language="java", query="client setup") →
+Base ALL responses on returned documentation
+```
+
+### Tool 2: `search_api_docs` - API Documentation (from fury_for_development)
+**MANDATORY for any Fury application API:**
+
+**Trigger Keywords:**
+- api documentation, current api, existing api, this api
+- fury application, api architecture, endpoints
+- authentication, api configuration
+
+**Required Parameters:**
+- `api_name_to_search`: exact application name
+- `query`: optional specific question
+
+**Usage Pattern:**
+```
+User asks about Items API →
+MUST call mcp__fury__search_api_docs(api_name_to_search="items", query="endpoints") →
+Provide documentation exactly as returned
+```
+
+### Tool 3: `find_mcp_server` - MCP Discovery (from fury_for_development)
+**Use ONLY when user explicitly asks for new MCP servers:**
+
+**Trigger Keywords:**
+- "is there an MCP for", "recommend an MCP"
+- "I need an MCP to", "MCP server for"
+- frontend development, database management, testing tools
+
+**Required Parameters:**
+- `query`: description of desired functionality
+
+**Usage Pattern:**
+```
+User: "Is there an MCP for frontend development?" →
+Call mcp__fury__find_mcp_server(query="frontend development Nordic Andes") →
+Present server info and setup instructions
+```
+
+### Tool 4: `search_api_specs` - API Specifications (from fury_for_development):
+
+Centralizes OpenAPI/AsyncAPI specifications for Fury applications. Treat it as the canonical source for endpoint definitions, schemas, and contract changes.
+
+**Trigger Keywords:**
+- openapi, asyncapi, api spec, schema definition
+- request payload, response payload, contract change
+- versioned api, endpoint contract, http client
+
+**Required Parameters:**
+- `app_name`: exact Fury application name as registered in Specs Hub
+- `query`: optional focus area (endpoint path, component name, version tag)
+
+**Usage Pattern:**
+```
+User: "For the Payments application, what is the POST /payments request schema?" →
+MUST call mcp__fury__search_api_specs(app_name="payments", query="POST /payments request payload") →
+Honor the returned spec as the integration contract
+```
+
+**Use this tool whenever:**
+- Answering questions about API contracts, request/response payloads, or versioned changes
+- Implementing, updating, or reviewing integration code against a Fury API
+
+---
+
+## 🔍 GENAI_CODE_REVIEW MCP
+
+### Tool 1: `code_review_instructions`
+**Generates comprehensive, executable instructions for conducting code reviews based on application-specific rules.**
+
+**Trigger Keywords:**
+- review changes, code review, review instructions
+- code quality, before commit, diff analysis
+- application rules, review workflow
+
+**Required Parameters:**
+- `application_name`: Name of the application being reviewed (usually found in `.fury` file in repository root)
+
+**Usage Pattern:**
+```
+User: "Review my changes" →
+MUST call code_review_instructions(application_name="app-name") →
+Execute returned analysis workflow →
+Present findings prioritized by severity
+```
+
+### Tool 2: `pr_review_search`
+**Retrieves code review execution history for a specific application and pull request number.**
+
+**Trigger Keywords:**
+- PR review history, past reviews, review results
+- pull request analysis, PR number review
+- review execution status
+
+**Required Parameters:**
+- `application_name`: Name of the application being reviewed (usually found in `.fury` file in repository root)
+- `pr_number`: Pull request number to retrieve reviews for
+
+**Usage Pattern:**
+```
+User: "Show me the reviews for PR #123" →
+MUST call pr_review_search(application_name="app-name", pr_number=123) →
+Present review history including execution status, costs, and outputs
+```
+
+---
+
+## ⚡ EXECUTION RULES
+
+### 1. Detection & Blocking
+```python
+if user_query contains fury_keywords:
+    BLOCK all responses
+    CALL mcp__fury__ tools FIRST (search_sdk_docs, search_api_docs, search_api_specs, or find_mcp_server)
+    WAIT for documentation
+    RESPOND based only on MCP output
+
+elif user_query contains review_keywords:
+    BLOCK all responses
+    CALL mcp__genai_code_review__ tools FIRST
+    WAIT for analysis
+    RESPOND based only on MCP output
+
+elif user_query contains security_keywords:
+    BLOCK all responses
+    CALL mcp__meli_appsec_codeguard__ tools FIRST
+    WAIT for analysis
+    RESPOND based only on MCP output
+
+elif user_query explicitly_asks_for_mcp:
+    CALL mcp__fury__find_mcp_server
+    Present recommendations with setup
+
+else:
+    Proceed normally
+```
+
+### 2. Parallel Execution Guidelines
+**ALLOWED in parallel:**
+- Multiple `mcp__fury__search_sdk_docs` calls for different services
+- `mcp__fury__search_api_docs` + `mcp__genai_code_review__*` (different contexts)
+
+**MUST be sequential:**
+- Any code review followed by fixes
+- MCP discovery followed by setup
+- Documentation fetch before implementation
+
+### 3. Response Attribution Pattern
+```
+ALWAYS start with: "Based on [MCP_NAME] documentation..."
+NEVER say: "I'll help you with..." before calling MCP
+ALWAYS end with: MCP source attribution
+```
+
+---
+
+## 🛑 ERROR HANDLING PROTOCOL
+
+### MCP Failure Response Template:
+```
+"The [MCP_NAME] returned an error: [exact_error_message]
+Cannot provide [implementation/API/review] guidance without official documentation.
+Please contact fury@mercadolibre.com if this persists."
+```
+
+### Missing Information Protocol:
+```
+if service/language/app_name unclear:
+    1. Ask: "Which [service/language/application] specifically?"
+    2. Wait for clarification
+    3. Call appropriate MCP with specific params
+    4. Never guess or use defaults
+```
+
+---
+
+## 📊 PRACTICAL EXAMPLES
+
+### Example 1: Fury Service Implementation
+```
+User: "How do I create a KVS client?"
+
+✅ CORRECT:
+1. Call: mcp__fury__search_sdk_docs(
+      service="kvs",
+      language="java",  # or ask if not specified
+      query="create client setup"
+   )
+2. Wait for documentation
+3. Response: "Based on backend namespace documentation (fury_for_development), here's how to create a KVS client..."
+4. Provide exact code from documentation
+
+❌ WRONG:
+- Providing generic Java client code
+- Explaining KVS concepts without documentation
+- Suggesting implementation patterns from memory
+```
+
+### Example 2: API Documentation Request
+```
+User: "Show me the Items API"
+
+✅ CORRECT:
+1. Call: mcp__fury__search_api_docs(
+      api_name_to_search="items",
+      query="endpoints documentation"
+   )
+2. Present documentation exactly
+3. Response: "Based on backend namespace documentation, here's the Items API..."
+
+❌ WRONG:
+- Guessing endpoint names
+- Providing generic REST patterns
+```
+
+### Example 3: MCP Discovery Request
+```
+User: "Is there an MCP for frontend development?"
+
+✅ CORRECT:
+1. Call: mcp__fury__find_mcp_server(
+      query="frontend development Nordic Andes UI"
+   )
+2. Present returned server info
+3. Show setup instructions from response
+4. Offer to help with configuration
+
+❌ WRONG:
+- Saying "I don't know about MCPs"
+- Suggesting MCPs without using find_mcp_server
+- Proactively suggesting MCPs without being asked
+```
+
+### Example 4: Code Review Request
+```
+User: "Review my changes before commit"
+
+✅ CORRECT:
+1. Call: mcp__genai_code_review__code_review_instructions(
+      application_name="project-name"
+   )
+2. Execute the returned analysis workflow
+3. Present findings prioritized by severity
+4. Provide actionable fixes
+
+❌ WRONG:
+- Reviewing code without MCP analysis
+- Providing generic code review feedback
+```
+
+### Example 5: PR Review History Request
+```
+User: "Show me reviews for PR #456"
+
+✅ CORRECT:
+1. Call: mcp__genai_code_review__pr_review_search(
+      application_name="project-name",
+      pr_number=456
+   )
+2. Present review history with status and outputs
+3. Highlight any issues found
+
+❌ WRONG:
+- Guessing PR review status
+- Providing made-up review results
+```
+
+---
+
+## 🔒 COMPLIANCE CHECKLIST
+
+Before EVERY response about Fury services, APIs, or code:
+
+- [ ] Did I detect MCP trigger keywords?
+- [ ] Did I call the appropriate MCP tool FIRST?
+- [ ] Did I wait for MCP response completely?
+- [ ] Is my response based ENTIRELY on MCP output?
+- [ ] Did I attribute the MCP source clearly?
+- [ ] If MCP failed, did I surface the exact error?
+
+**VIOLATION = STOP AND RESTART WITH MCP CONSULTATION**
+
+---
+
+## 🎓 GOLDEN RULES
+
+1. **MCP calls are GATES, not supplements** - Call BEFORE any guidance
+2. **Documentation is LAW** - Never override with general knowledge
+3. **Errors are FINAL** - Never work around MCP failures
+4. **Discovery is ON-DEMAND** - Only suggest MCPs when explicitly asked
+5. **Attribution is MANDATORY** - Always cite MCP sources
