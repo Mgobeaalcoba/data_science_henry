@@ -14,43 +14,41 @@
 
 ---
 
-## 🚀 Instalación en 4 Pasos
+## 🚀 Instalación en Pasos Simples
 
-### **Opción 1: Poetry** (Recomendado por gestión automática)
+### **Opción 1: Uso del Makefile** (Recomendado y automatizado)
 
 ```bash
-# Paso 1: Instalar Poetry
-curl -sSL https://install.python-poetry.org | python3 -
-
-# Paso 2: Navegar al proyecto
+# Paso 1: Clonar y navegar al proyecto
 cd data_science_henry
 
-# Paso 3: Instalar TODAS las dependencias
-poetry install
+# Paso 2: Crear el entorno virtual e instalar todo automáticamente
+make install
 
-# Paso 4: Activar entorno
-poetry shell
+# Paso 3: Activar el entorno virtual creado
+source .venv/bin/activate
 
-# ✅ Listo! Ahora ejecuta:
-jupyter lab
+# Paso 4: Lanzar JupyterLab
+make jupyter
 ```
 
-### **Opción 2: pip + venv** (Más simple, control manual)
+### **Opción 2: Manual con pip + venv**
 
 ```bash
 # Paso 1: Crear entorno virtual
-python -m venv .venv
+python3 -m venv .venv
 
 # Paso 2: Activar entorno
 source .venv/bin/activate      # Mac/Linux
 # o
 .venv\Scripts\activate         # Windows
 
-# Paso 3: Instalar dependencias
+# Paso 3: Actualizar pip e instalar dependencias
+pip install --upgrade pip
 pip install -r requirements.txt
 
 # Paso 4: Instalar kernel de Jupyter
-python -m ipykernel install --user --name=data-science-henry
+python -m ipykernel install --user --name=data-science-henry --display-name="Data Science Henry (venv)"
 
 # ✅ Listo! Ahora ejecuta:
 jupyter lab
@@ -88,17 +86,14 @@ print("\n🎉 ¡Todo instalado correctamente!")
 
 ## 📚 Iniciar JupyterLab
 
-### Con Poetry:
+### Con Makefile (Recomendado):
 ```bash
-poetry run jupyter lab
-# o
-poetry shell
-jupyter lab
+make jupyter
 ```
 
-### Con venv:
+### Con venv activado:
 ```bash
-# Asegúrate de tener el entorno activado
+source .venv/bin/activate
 jupyter lab
 ```
 
@@ -171,18 +166,6 @@ make clean      # Limpiar archivos temporales (__pycache__, .ipynb_checkpoints)
 
 ## 🔧 Troubleshooting
 
-### Error: "Command not found: poetry"
-
-Poetry no está en tu PATH. Solución:
-
-```bash
-# Mac/Linux: Agregar a ~/.bashrc o ~/.zshrc
-export PATH="$HOME/.local/bin:$PATH"
-
-# Reinicia terminal
-source ~/.bashrc
-```
-
 ### Error al importar PyTorch
 
 Visita [pytorch.org](https://pytorch.org/get-started/locally/) y usa el selector para tu configuración:
@@ -192,15 +175,13 @@ Visita [pytorch.org](https://pytorch.org/get-started/locally/) y usa el selector
 
 ### Jupyter Kernel no aparece
 
+Asegúrate de haber registrado el kernel con el entorno virtual activado:
 ```bash
-# Con Poetry
-poetry run python -m ipykernel install --user --name=ds-henry
-
-# Con venv
-python -m ipykernel install --user --name=ds-henry
+source .venv/bin/activate
+python -m ipykernel install --user --name=data-science-henry --display-name="Data Science Henry (venv)"
 ```
 
-Luego en Jupyter: Kernel → Change Kernel → ds-henry
+Luego en Jupyter: Kernel → Change Kernel → Data Science Henry (venv)
 
 ### JupyterLab no se lanza
 
@@ -208,9 +189,7 @@ Luego en Jupyter: Kernel → Change Kernel → ds-henry
 # Verificar que está instalado
 jupyter --version
 
-# Si no está, instalar:
-poetry add jupyterlab
-# o
+# Si no está, instalarlo en el venv activo:
 pip install jupyterlab
 ```
 
@@ -276,16 +255,15 @@ LOG_LEVEL=INFO
 ### Jupyter Extensions (Opcional)
 
 ```bash
-# Extensiones útiles
-poetry run pip install jupyter-contrib-nbextensions
-poetry run jupyter contrib nbextension install --user
-
+# Extensiones útiles (con el venv activado)
+pip install jupyter-contrib-nbextensions
+jupyter contrib nbextension install --user
+```
 # Extensiones recomendadas:
 # - Table of Contents (TOC)
 # - Variable Inspector
 # - ExecuteTime
 # - Code Folding
-```
 
 ---
 

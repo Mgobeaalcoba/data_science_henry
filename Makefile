@@ -2,23 +2,29 @@
 
 .PHONY: help install update clean test format lint jupyter lab notebook
 
+VENV = .venv
+BIN = $(VENV)/bin
+
 help:
 	@echo "Comandos disponibles:"
-	@echo "  make install     - Instalar dependencias con Poetry"
-	@echo "  make update      - Actualizar dependencias"
+	@echo "  make install     - Crear venv e instalar dependencias con pip"
+	@echo "  make update      - Actualizar dependencias del requirements.txt"
 	@echo "  make clean       - Limpiar archivos temporales"
-	@echo "  make test        - Ejecutar tests"
-	@echo "  make format      - Formatear código con Black e isort"
-	@echo "  make lint        - Verificar código con flake8"
-	@echo "  make jupyter     - Iniciar Jupyter Lab"
+	@echo "  make test        - Ejecutar tests usando el venv"
+	@echo "  make format      - Formatear código con Black e isort usando el venv"
+	@echo "  make lint        - Verificar código con flake8 usando el venv"
+	@echo "  make jupyter     - Iniciar Jupyter Lab usando el venv"
 	@echo "  make lab         - Alias para jupyter"
-	@echo "  make notebook    - Iniciar Jupyter Notebook clásico"
+	@echo "  make notebook    - Iniciar Jupyter Notebook clásico usando el venv"
 
 install:
-	poetry install
+	python3 -m venv $(VENV)
+	$(BIN)/pip install --upgrade pip
+	$(BIN)/pip install -r requirements.txt
 
 update:
-	poetry update
+	$(BIN)/pip install --upgrade pip
+	$(BIN)/pip install --upgrade -r requirements.txt
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
@@ -31,19 +37,19 @@ clean:
 	find . -type f -name "*.log" -delete
 
 test:
-	poetry run pytest tests/ -v --cov=utils
+	$(BIN)/pytest tests/ -v --cov=utils
 
 format:
-	poetry run black .
-	poetry run isort .
+	$(BIN)/black .
+	$(BIN)/isort .
 
 lint:
-	poetry run flake8 utils/ --max-line-length=88 --extend-ignore=E203
+	$(BIN)/flake8 utils/ --max-line-length=88 --extend-ignore=E203
 
 jupyter:
-	poetry run jupyter lab
+	$(BIN)/jupyter lab
 
 lab: jupyter
 
 notebook:
-	poetry run jupyter notebook
+	$(BIN)/jupyter notebook

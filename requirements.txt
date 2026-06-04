@@ -1,5 +1,5 @@
 # Data Science y Machine Learning - Curso Henry
-# Este archivo es un respaldo. Se recomienda usar Poetry (pyproject.toml)
+# Gestión de dependencias principal con pip
 
 # Core Data Science
 numpy>=1.24.0

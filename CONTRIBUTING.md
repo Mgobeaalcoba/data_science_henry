@@ -97,7 +97,9 @@ Si agregas nueva funcionalidad:
 1. Agrega tests en el directorio `tests/`
 2. Asegúrate que los tests pasen:
    ```bash
-   poetry run pytest
+   make test
+   # o con el venv activo:
+   pytest
    ```
 
 ## Documentación

@@ -185,8 +185,8 @@ data_science_henry/
 │   ├── data_processing.py
 │   ├── visualization.py
 │   └── model_evaluation.py
-├── pyproject.toml          # Gestión de dependencias con Poetry
-├── requirements.txt        # Dependencias (backup para pip)
+├── pyproject.toml          # Configuración de herramientas de desarrollo
+├── requirements.txt        # Gestión de dependencias con pip
 ├── README.md               # Este archivo
 ├── QUICKSTART.md           # Guía de inicio rápido
 ├── ARCHITECTURE.md         # Arquitectura del proyecto
@@ -211,37 +211,35 @@ data_science_henry/
 
 ## 🚀 Instalación Rápida
 
-### Opción 1: Poetry (Recomendado)
+### Opción 1: Con Makefile (Recomendado y automatizado)
 
 ```bash
-# 1. Instalar Poetry
-curl -sSL https://install.python-poetry.org | python3 -
-
-# 2. Navegar al proyecto
+# 1. Navegar al proyecto
 cd data_science_henry
 
-# 3. Instalar dependencias
-poetry install
+# 2. Crear entorno virtual e instalar dependencias automáticamente
+make install
 
-# 4. Activar entorno
-poetry shell
+# 3. Activar entorno virtual
+source .venv/bin/activate
 
-# 5. Lanzar Jupyter
-jupyter lab
+# 4. Lanzar JupyterLab
+make jupyter
 ```
 
-### Opción 2: pip + venv
+### Opción 2: Con pip + venv (Manual)
 
 ```bash
 # 1. Crear entorno virtual
-python -m venv .venv
+python3 -m venv .venv
 
 # 2. Activar entorno
 source .venv/bin/activate  # Mac/Linux
 # o
 .venv\Scripts\activate     # Windows
 
-# 3. Instalar dependencias
+# 3. Actualizar pip e instalar dependencias
+pip install --upgrade pip
 pip install -r requirements.txt
 
 # 4. Lanzar Jupyter
@@ -280,7 +278,7 @@ jupyter lab
 
 ### **Entorno**
 - **JupyterLab**: IDE para notebooks
-- **Poetry**: Gestión de dependencias
+- **Pip/Venv**: Gestión de dependencias
 
 ---
 

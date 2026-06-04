@@ -620,7 +620,7 @@ else:
 
 - [ ] Jupyter/JupyterLab
 - [ ] Git para control de versiones
-- [ ] Poetry para gestión de dependencias
+- [ ] Pip/Venv para gestión de dependencias
 - [ ] Pandas para manipulación de datos
 - [ ] Scikit-learn para ML clásico
 - [ ] PyTorch para Deep Learning

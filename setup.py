@@ -7,6 +7,13 @@ from setuptools import setup, find_packages
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+with open("requirements.txt", "r", encoding="utf-8") as f:
+    requirements = [
+        line.strip()
+        for line in f
+        if line.strip() and not line.strip().startswith("#")
+    ]
+
 setup(
     name="data-science-henry",
     version="1.0.0",
@@ -28,11 +35,5 @@ setup(
         "Programming Language :: Python :: 3.11",
     ],
     python_requires=">=3.9",
-    install_requires=[
-        "numpy>=1.24.0",
-        "pandas>=2.0.0",
-        "scikit-learn>=1.3.0",
-        "matplotlib>=3.7.0",
-        "seaborn>=0.12.0",
-    ],
+    install_requires=requirements,
 )

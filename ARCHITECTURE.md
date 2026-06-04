@@ -139,9 +139,8 @@ data_science_henry/
 ├── CONTRIBUTING.md                 # Guía de contribución
 ├── LICENSE                         # Licencia MIT
 ├── Makefile                        # Comandos automatizados
-├── pyproject.toml                  # Poetry config
-├── poetry.lock                     # Lock file de dependencias
-├── requirements.txt                # Backup para pip
+├── pyproject.toml                  # Configuración de herramientas de desarrollo
+├── requirements.txt                # Gestión de dependencias con pip
 └── setup.py                        # Instalación como paquete
 ```
 
@@ -270,46 +269,32 @@ graph LR
 
 ---
 
-## 🛠️ Gestión de Dependencias
+## 🛠️ Gestión de Dependencias (pip)
 
-### Con Poetry (Recomendado)
+### Comandos de pip
 
 ```bash
-# Agregar librería
-poetry add nombre-libreria
+# Instalar todas las dependencias
+pip install -r requirements.txt
 
-# Agregar con versión específica
-poetry add "numpy>=1.26.0,<2.0.0"
+# Instalar el proyecto como paquete editable
+pip install -e .
 
-# Agregar para desarrollo (no producción)
-poetry add --group dev pytest-cov
+# Agregar/actualizar una librería manualmente
+pip install nombre-libreria
+# Registrarla en el archivo de dependencias
+pip freeze > requirements.txt
 
-# Actualizar todas las dependencias
-poetry update
-
-# Ver árbol de dependencias
-poetry show --tree
-
-# Exportar a requirements.txt
-poetry export -f requirements.txt --output requirements.txt
+# Listar dependencias instaladas
+pip list
 ```
 
-### Grupos de Dependencias
+### Gestión de Entorno con Makefile
 
-**En `pyproject.toml`:**
-
-```toml
-[tool.poetry.dependencies]
-python = "^3.9"
-numpy = "^1.26.4"
-pandas = "^2.3.3"
-...
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.0.0"
-black = "^24.0.0"
-...
-```
+El archivo `Makefile` automatiza la creación y actualización del entorno:
+- `make install`: Crea el `.venv` e instala todas las dependencias.
+- `make update`: Actualiza las dependencias basándose en `requirements.txt`.
+- `make clean`: Limpia cachés y archivos temporales.
 
 ---
 
@@ -329,19 +314,19 @@ tests/
 ### Ejecutar Tests
 
 ```bash
-# Todos los tests
+# Todos los tests (usando el Makefile)
 make test
-# o
-poetry run pytest
+# o directamente con pytest activo
+pytest
 
 # Con cobertura
-poetry run pytest --cov=utils --cov-report=html
+pytest --cov=utils --cov-report=html
 
 # Test específico
-poetry run pytest tests/test_data_processing.py -v
+pytest tests/test_data_processing.py -v
 
 # Con output verbose
-poetry run pytest -vv
+pytest -vv
 ```
 
 ---
@@ -638,35 +623,27 @@ git commit -m "Agrega clase XX: Nombre del Tema"
 
 ## 📚 Dependencias Principales
 
-### Core (Production)
+Registradas y gestionadas en el archivo [requirements.txt](file:///Users/mgobea/Documents/data_science_henry/requirements.txt):
 
-```toml
-python = "^3.9"
-numpy = "^1.26.4"
-pandas = "^2.3.3"
-matplotlib = "^3.10.8"
-seaborn = "^0.13.2"
-scikit-learn = "^1.5.2"
-torch = "^2.2.2"
-xgboost = "^2.1.3"
-lightgbm = "^4.5.0"
-catboost = "^1.2.7"
-statsmodels = "^0.14.4"
-optuna = "^4.1.0"
-jupyter = "^1.1.1"
-jupyterlab = "^4.3.4"
-```
+### Core (Producción)
+- **numpy** (>=1.24.0)
+- **pandas** (>=2.0.0)
+- **scikit-learn** (>=1.3.0)
+- **matplotlib** (>=3.7.0)
+- **seaborn** (>=0.12.0)
+- **torch** (>=2.1.0)
+- **tensorflow** (>=2.14.0)
+- **xgboost** (>=2.0.0)
+- **lightgbm** (>=4.0.0)
+- **catboost** (>=1.2.0)
+- **statsmodels** (>=0.14.0)
+- **optuna** (>=3.3.0)
+- **jupyter** / **jupyterlab** / **notebook**
 
-### Development
-
-```toml
-pytest = "^8.3.4"
-pytest-cov = "^6.0.0"
-black = "^24.10.0"
-flake8 = "^7.1.1"
-mypy = "^1.13.0"
-ipykernel = "^6.29.5"
-```
+### Desarrollo (Herramientas)
+- **pytest** / **pytest-cov**
+- **black** / **isort** / **flake8**
+- **mypy** / **ipdb** / **ipykernel**
 
 **Total de dependencias**: ~50 paquetes (con subdependencias: ~200)
 
@@ -787,10 +764,10 @@ Ver archivo `LICENSE` para el texto completo.
 cd data_science_henry
 
 # 2. Instala dependencias
-poetry install
+make install
 
 # 3. Activa entorno
-poetry shell
+source .venv/bin/activate
 
 # 4. Abre tu primer notebook
 jupyter lab clase_01_introduccion_ml/notebooks/resumen_actividad_clase_01.ipynb
