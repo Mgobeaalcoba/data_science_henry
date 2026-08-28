@@ -120,3 +120,6 @@ optuna.db
 *.temp
 temp/
 tmp/
+
+# Editor-specific rules (local only)
+.cursor/
