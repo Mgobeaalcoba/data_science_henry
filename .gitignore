@@ -77,20 +77,7 @@ venv.bak/
 *~
 .DS_Store
 
-# Data files (uncomment if you don't want to track data)
-# data/raw/*
-# data/processed/*
-# data/external/*
-*.csv
-*.xlsx
-*.xls
-*.json
-*.parquet
-*.feather
-*.pkl
-*.pickle
-*.h5
-*.hdf5
+# Data files: tracked intentionally (course datasets, small CSV/XLSX)
 
 # Model files
 *.h5
