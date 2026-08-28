@@ -48,6 +48,10 @@ Hasta agosto de 2026 el repo tenía además `src/`, `tests/`, `utils/`, un `data
 
 Lo que sí se mantuvo: `.venv/` (entorno local del usuario), `requirements.txt` (simplificado a lo que realmente usan los notebooks: pandas, numpy, scikit-learn, xgboost, lightgbm, catboost, statsmodels, torch, openpyxl, optuna, jupyter).
 
+## Los datasets están versionados en git
+
+Hasta agosto de 2026 el `.gitignore` tenía una regla general `*.csv` / `*.xlsx` / `*.json` / ... que excluía **todos** los datasets de `clase_XX/data/` del control de versiones — nadie los subía nunca al repo remoto, solo vivían en la copia local de cada uno. Esa es la razón por la que el dataset de la clase 09 (`cityscoot_daily_rides.csv`) se perdió sin dejar rastro: nunca estuvo en un commit (ver la nota más abajo). Se sacó esa regla y se agregaron los ~2.2 MB de datasets actuales al repo, para que clonar el repo alcance para correr cualquier notebook sin depender de que el dataset siga existiendo en la máquina de alguien. Los formatos de artefactos de modelo (`*.h5`, `*.pkl`, `*.joblib`) se mantienen ignorados — esos sí conviene regenerarlos, no versionarlos.
+
 ## El hilo del Proyecto Integrador (PI)
 
 Cuatro clases (03, 06, 08, 09) comparten un mismo caso de punta a punta — **FinanceGuard**, banco digital con problema de churn — sobre el dataset `Churn_Modelling.csv`. Cada avance construye sobre el anterior:
@@ -61,4 +65,4 @@ Estos nombres de archivo (`1_...`, `2_...`, `3_...`) son parte de la consigna de
 
 ## Nota sobre clase_09: dataset simulado
 
-El dataset original `cityscoot_daily_rides.csv` que pedía la consigna de la clase 09 no estaba en el repo (se perdió en algún punto y no quedó rastro en el historial de git). Se generó un dataset sintético equivalente (2 años de viajes diarios, con tendencia creciente + estacionalidad semanal + ruido, semilla fija `42`) para que el notebook de descomposición de series temporales sea ejecutable de punta a punta. Si en algún momento aparece el dataset real, basta con reemplazar el CSV — el notebook no depende de que los datos sean sintéticos.
+El dataset original `cityscoot_daily_rides.csv` que pedía la consigna de la clase 09 no estaba en el repo (se perdió en algún punto y no quedó rastro en el historial de git — ver la sección anterior sobre por qué). Se generó un dataset sintético equivalente (2 años de viajes diarios, con tendencia creciente + estacionalidad semanal + ruido, semilla fija `42`) para que el notebook de descomposición de series temporales sea ejecutable de punta a punta. Si en algún momento aparece el dataset real, basta con reemplazar el CSV — el notebook no depende de que los datos sean sintéticos.
