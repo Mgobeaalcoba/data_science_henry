@@ -1,71 +1,14 @@
-# Clase 02: Aprendizaje Supervisado I - Regresión
+# Clase 02 — Regresión
 
-## Objetivos
-- Comprender los fundamentos de la regresión lineal
-- Implementar modelos de regresión con scikit-learn
-- Evaluar modelos usando métricas apropiadas
-- Aplicar técnicas de regularización
+**Caso**: RetailBoost quiere predecir el gasto mensual (`monthly_spent`) de sus clientes a partir de edad, ingresos, historial de visitas, etc.
 
-## Contenidos
+**Dataset**: `data/retailboost_customers_regression.csv`
 
-### 1. Regresión Lineal Simple
-- Concepto de regresión
-- Función de costo (MSE)
-- Método de mínimos cuadrados
-- Interpretación de coeficientes
+**Notebook**: `notebooks/regresion_retailboost.ipynb` — resuelve la consigna obligatoria de `docs/homework_consigna.md`:
+1. Importación y exploración del dataset
+2. Distribución de la variable objetivo y de las predictoras principales
+3. Regresión lineal simple (1 variable) y múltiple (todas)
+4. Métricas R², MAE, RMSE sobre el conjunto de prueba
+5. Interpretación: qué tan bien ajusta el modelo y si los errores son razonables
 
-### 2. Regresión Lineal Múltiple
-- Extensión a múltiples variables
-- Multicolinealidad
-- Feature selection básico
-
-### 3. Métricas de Evaluación
-- **MSE** (Mean Squared Error)
-- **RMSE** (Root Mean Squared Error)
-- **MAE** (Mean Absolute Error)
-- **R²** (Coeficiente de determinación)
-- **MAPE** (Mean Absolute Percentage Error)
-
-### 4. Regularización
-- **Ridge Regression (L2)**
-- **Lasso Regression (L1)**
-- **ElasticNet**
-- Selección de hiperparámetros
-
-### 5. Validación de Modelos
-- Train/Test split
-- Validación cruzada (K-Fold)
-- Análisis de residuos
-
-## Notebooks
-
-1. **01_regresion_simple.ipynb**: Implementación desde cero
-2. **02_regresion_multiple.ipynb**: Regresión con múltiples features
-3. **03_metricas_evaluacion.ipynb**: Comparación de métricas
-4. **04_regularizacion.ipynb**: Ridge, Lasso y ElasticNet
-5. **05_validacion_cruzada.ipynb**: Técnicas de validación
-
-## Scripts
-
-- `linear_regression.py`: Implementación personalizada
-- `model_training.py`: Pipeline de entrenamiento
-- `metrics.py`: Cálculo de métricas
-
-## Datasets
-
-- `boston_housing.csv`: Predicción de precios de casas
-- `salary_data.csv`: Predicción de salarios
-- `california_housing.csv`: Housing prices en California
-
-## Ejercicios
-
-1. Implementar regresión lineal desde cero
-2. Comparar rendimiento de diferentes modelos
-3. Analizar el efecto de la regularización
-4. Realizar feature engineering para mejorar predicciones
-5. Validar modelos con K-Fold CV
-
-## Recursos
-
-- [Linear Regression - StatQuest](https://www.youtube.com/watch?v=nk2CQITm_eo)
-- [Ridge and Lasso Regression](https://scikit-learn.org/stable/modules/linear_model.html)
+**Consigna original**: ver `docs/homework_consigna.md`.

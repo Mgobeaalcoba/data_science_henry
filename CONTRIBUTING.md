@@ -1,149 +1,35 @@
-# Guía de Contribución
+# Guía de contribución
 
-Gracias por tu interés en contribuir al curso de Data Science y Machine Learning.
+Este repositorio es material de una cursada de Data Science. Contribuciones bienvenidas, sobre todo si encontrás un error en un notebook o una consigna desactualizada.
 
-## Cómo Contribuir
+## Reportar un error
 
-### Reportar Errores
+Abrí un issue con:
+- En qué clase/notebook está (`clase_XX/notebooks/nombre.ipynb`)
+- Qué esperabas que pasara vs. qué pasó
+- Si es un error de código: el traceback completo
 
-Si encuentras un error en el código, documentación o notebooks:
+## Proponer un cambio
 
-1. Verifica que el error no haya sido reportado anteriormente
-2. Abre un nuevo issue con:
-   - Descripción clara del error
-   - Pasos para reproducirlo
-   - Comportamiento esperado vs. comportamiento actual
-   - Capturas de pantalla si aplica
-   - Entorno (Python version, OS, etc.)
+1. Fork del repositorio
+2. Rama descriptiva: `git checkout -b fix/clase-05-typo-en-metricas`
+3. Cambios + commit: `git commit -m "Corrige cálculo de RMSE en clase 05"`
+4. Push y Pull Request
 
-### Sugerir Mejoras
+## Reglas para tocar un notebook
 
-Para sugerir nuevas features o mejoras:
+Cada clase tiene **un único notebook** — esa es la regla central del repo (ver `ARCHITECTURE.md`). Si tu cambio agrega una sección nueva, que sea porque cubre algo que la consigna pide y que hoy falta, no porque "estaría bueno agregar". Si el notebook ya cubre lo obligatorio de `docs/homework.md` (o de la consigna del PI), no hace falta ampliarlo.
 
-1. Abre un issue describiendo:
-   - La mejora propuesta
-   - Por qué sería útil
-   - Cómo se implementaría (opcional)
+Para que un notebook sea aceptable en este repo tiene que ser:
 
-### Contribuir con Código
+- **Didáctico**: antes de cada celda de código, una celda de Markdown que explique qué hace y por qué — pensado para poder explicarse en vivo en clase, no solo para correrse.
+- **Corto**: lo mínimo necesario para cubrir la parte obligatoria de la consigna. Si algo es "extra credit" u opcional en la consigna, no hace falta implementarlo (y si se implementa, que sea breve y quede claramente marcado como opcional).
+- **Ejecutable de punta a punta**: corré `Kernel → Restart & Run All` antes de subirlo. Un notebook con celdas fuera de orden o con errores no se acepta.
+- **Reproducible**: usá `random_state=42` (o el seed equivalente de la librería) en cualquier paso con aleatoriedad.
+- **Sin rutas absolutas**: los datasets se cargan con rutas relativas (`../data/archivo.csv`), nunca con la ruta absoluta de tu máquina.
 
-1. **Fork** el repositorio
-2. **Crea una rama** para tu feature:
-   ```bash
-   git checkout -b feature/nueva-funcionalidad
-   ```
-3. **Realiza tus cambios**
-4. **Commitea** tus cambios:
-   ```bash
-   git commit -m "Agrega nueva funcionalidad"
-   ```
-5. **Push** a tu fork:
-   ```bash
-   git push origin feature/nueva-funcionalidad
-   ```
-6. **Abre un Pull Request**
+Si tu cambio es a un notebook de las clases que forman parte del Proyecto Integrador (03, 06, 08, 09 — ver `README.md`), respetá el nombre de archivo existente (`1_...`, `2_...`, `3_...`): es parte de la consigna, no un detalle de estilo.
 
-## Estándares de Código
+## Actualizar documentación
 
-### Python
-
-- Usar **PEP 8** para estilo de código
-- Usar **type hints** cuando sea posible
-- Docstrings en formato **Google** o **NumPy**
-- Nombres descriptivos de variables y funciones
-
-```python
-def calculate_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, float]:
-    """
-    Calcula métricas de evaluación para un modelo.
-
-    Args:
-        y_true: Valores reales
-        y_pred: Valores predichos
-
-    Returns:
-        Diccionario con métricas calculadas
-    """
-    pass
-```
-
-### Notebooks
-
-- Título claro en el primer markdown cell
-- Secciones bien organizadas
-- Comentarios explicativos en el código
-- Output limpio (no dejar outputs de debugging)
-- Ejecutar todas las celdas antes de commitear
-
-### Estructura de Commits
-
-- Usar mensajes descriptivos en imperativo
-- Una funcionalidad por commit cuando sea posible
-
-```bash
-# Bueno
-git commit -m "Agrega función para calcular RMSE"
-git commit -m "Corrige error en preprocessing de datos"
-
-# Malo
-git commit -m "Updates"
-git commit -m "Fix bug"
-```
-
-## Testing
-
-Si agregas nueva funcionalidad:
-
-1. Agrega tests en el directorio `tests/`
-2. Asegúrate que los tests pasen:
-   ```bash
-   make test
-   # o con el venv activo:
-   pytest
-   ```
-
-## Documentación
-
-Al agregar nuevas funciones o módulos:
-
-1. Actualiza el README si es necesario
-2. Agrega docstrings completas
-3. Actualiza documentación en `docs/` si aplica
-
-## Code Review
-
-Todos los PRs serán revisados. Por favor:
-
-- Responde a los comentarios
-- Realiza los cambios solicitados
-- Mantén la discusión profesional y constructiva
-
-## Código de Conducta
-
-### Nuestros Estándares
-
-- Usar lenguaje inclusivo y respetuoso
-- Respetar diferentes puntos de vista
-- Aceptar críticas constructivas
-- Enfocarse en lo mejor para la comunidad
-
-### Comportamiento Inaceptable
-
-- Lenguaje o imágenes inapropiadas
-- Ataques personales
-- Acoso público o privado
-- Publicar información privada de otros
-
-## Licencia
-
-Al contribuir, aceptas que tus contribuciones serán licenciadas bajo la MIT License.
-
-## Preguntas
-
-Si tienes preguntas sobre cómo contribuir:
-- Abre un issue con la etiqueta "question"
-- Contacta al mantenedor: mariano.gobea@mercadolibre.com
-
----
-
-¡Gracias por contribuir! 🎉
+Si tu cambio afecta la consigna, el dataset o el resultado principal de una clase, actualizá también el `README.md` de esa clase (una tabla o párrafo corto alcanza — no hace falta que sea extenso).
