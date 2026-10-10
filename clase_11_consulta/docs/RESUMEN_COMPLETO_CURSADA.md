@@ -237,7 +237,9 @@ ROC-AUC   = Área bajo la curva ROC
 
 ---
 
-### **Clase 08: Sistemas de Recomendación**
+### **Clase 08: Aprendizaje No Supervisado II — Segmentación de clientes**
+
+La clase 08 corresponde al tercer avance del Proyecto Integrador: aplica K-Means y DBSCAN para segmentar clientes de FinanceGuard y utiliza PCA y t-SNE para visualizar los patrones. Los clusters pueden servir como insumo para personalización o recomendación, pero el notebook no implementa un sistema de recomendación completo.
 
 **Enfoques:**
 1. **Filtrado Colaborativo**:

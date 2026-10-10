@@ -37,7 +37,7 @@ La regresión logística será tu modelo baseline. Enfócate en entender cómo f
 Comprensión del problema y análisis exploratorio básico
 Investigar qué es el churn bancario
 
-Carga y exploración inicial del dataset (50,000 clientes)
+Carga y exploración inicial del dataset (aproximadamente 10.000 clientes en el archivo provisto)
 
 Variables demográficas: edad, género, ubicación, antigüedad
 

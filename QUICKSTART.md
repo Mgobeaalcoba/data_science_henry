@@ -28,6 +28,18 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
+### macOS: requisito para XGBoost y LightGBM
+
+Las clases 05 y 06 utilizan librerías que requieren el runtime OpenMP. En macOS
+con Apple Silicon instalalo una vez con Homebrew:
+
+```bash
+brew install libomp
+```
+
+Si Homebrew está instalado en una ubicación no estándar, abrí una nueva
+terminal después de la instalación antes de iniciar JupyterLab.
+
 ## Cómo usar el repo
 
 1. Cada clase es independiente — no hace falta correrlas en orden para que funcionen, aunque el curso está pensado para seguirse 01 → 11.

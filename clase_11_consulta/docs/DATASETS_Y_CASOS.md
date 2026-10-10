@@ -47,7 +47,7 @@
 
 **Problemas abordados**:
 - Clase 07: Segmentación de clientes (K-Means, DBSCAN)
-- Clase 08: Sistema de recomendaciones (collaborative filtering)
+- Clase 08: Segmentación de clientes con aprendizaje no supervisado (K-Means, DBSCAN, PCA y t-SNE). Los clusters pueden utilizarse luego como insumo para recomendación.
 
 **Métricas logradas**:
 - Silhouette Score: 0.55-0.65

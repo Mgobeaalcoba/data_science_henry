@@ -5,7 +5,7 @@ abandono de clientes (churn). Como Científico de Datos Junior, tu objetivo en e
 avance es construir un modelo baseline de predicción de churn mediante Regresión Logística,
 comprendiendo cómo las variables demográficas y financieras influyen en la probabilidad de
 que un cliente abandone el banco. El análisis comienza con la carga y exploración del dataset
-de 50.000 clientes, la detección de valores faltantes, el tratamiento de variables categóricas y
+del dataset provisto de aproximadamente 10.000 clientes, la detección de valores faltantes, el tratamiento de variables categóricas y
 numéricas, y la división del conjunto de datos para entrenamiento y prueba.
 El modelo se implementará con scikit-learn, interpretando la función sigmoide, los
 coeficientes y los odds ratios, para luego evaluar su desempeño mediante matriz de
@@ -17,7 +17,7 @@ comparar y mejorar modelos más complejos en los próximos avances.
 
 1. Comprensión del problema y análisis exploratorio básico:
 ○ Investigar qué es el churn bancario
-○ Carga y exploración inicial del dataset 50,000 clientes)
+○ Carga y exploración inicial del dataset (aproximadamente 10.000 clientes en el archivo provisto)
 ○ Variables demográficas: edad, género, ubicación, antigüedad
 ○ Variables financieras: saldo promedio, productos contratados, transacciones
 ○ Variable objetivo: churn 1 = abandonó, 0 = activo)
@@ -47,4 +47,3 @@ La regresión logística será tu modelo baseline. Enfócate en entender cómo
 funciona el algoritmo, el procesamiento de las variables, y la interpretación de
 los resultados. Este modelo debe ser tu referencia para comparar modelos
 más complejos.
-
