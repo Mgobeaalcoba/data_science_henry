@@ -79,3 +79,9 @@ Las clases **03, 06, 08 y 09** conforman los 4 avances del Proyecto Integrador s
    - Definir `RANDOM_STATE = 42` al inicio del notebook y pasarlo a todos los estimadores, splits, `KMeans(..., n_init=10)` y semillas (`np.random.seed(42)`, `torch.manual_seed(42)`).
    - Al modificar cualquier celda de un `.ipynb`, **re-ejecutar el notebook completo** (`make execute` o script de validación) para garantizar que los `execution_count` sean correlativos (`1..N`) y que los outputs coincidan con el código sin errores ni warnings.
 
+
+## Memoria de sesiones
+
+- memory/STATE.md — foto del estado; memory/LOG.md — historial append-only (no se editan entradas viejas).
+- Puentes: CLAUDE.md, GEMINI.md y .github/copilot-instructions.md apuntan a este archivo.
+- Al cerrar una sesión con cambios: actualizar STATE, agregar la entrada en LOG y commitear (scripts/scan_secrets.py corre como hook pre-commit).
