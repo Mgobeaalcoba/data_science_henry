@@ -123,3 +123,7 @@ tmp/
 
 # Editor-specific rules (local only)
 .cursor/
+
+# CatBoost training logs
+catboost_info/
+

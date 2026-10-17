@@ -32,7 +32,7 @@ clase_XX_tema/
 | 05 | Modelos de ensamble | Eficiencia energética de edificios (RF vs. XGBoost) | `ENB2012_data.xlsx` | `homework_modelos_ensamble.ipynb` |
 | 06 | Optimización de modelos | FinanceGuard — boosting + tuning *(PI, avance 2)* | `Churn_Modelling.csv` | `2_GradientBoosting_Optimizacion.ipynb` |
 | 07 | Aprendizaje no supervisado I | Mall Customers — segmentación con K-Means | `Mall_Customers.csv` | `clustering_mall_customers.ipynb` |
-| 08 | Aprendizaje no supervisado II | FinanceGuard — clustering de clientes *(PI, avance 3)* | `Churn_Modelling (1).csv` | `3_AprendizajeNoSupervisado.ipynb` |
+| 08 | Aprendizaje no supervisado II | FinanceGuard — clustering de clientes *(PI, avance 3)* | `Churn_Modelling.csv` | `3_AprendizajeNoSupervisado.ipynb` |
 | 09 | Series temporales | CityScoot — descomposición de viajes diarios | `cityscoot_daily_rides.csv` *(simulado)* | `series_temporales_cityscoot.ipynb` |
 | 10 | Introducción al Deep Learning | EconoTrend — predicción del VIX con LSTM en PyTorch | `econotrend_vix_sim.csv` | `vix_lstm_didactico.ipynb` |
 | 11 | Consulta | Repaso general de la cursada, sin homework propio | — | `RESUMEN_TEMAS_CURSADA.ipynb` |

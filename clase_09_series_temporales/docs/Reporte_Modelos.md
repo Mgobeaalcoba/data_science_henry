@@ -163,19 +163,19 @@ Orden típico de importancia (gain):
 ## 4. Recomendaciones Estratégicas
 
 1. **Desplegar el mejor modelo supervisado (Stacking o XGBoost)** para scoring semanal o diario de clientes, con lista priorizada por probabilidad de churn.
-2. **Optimizar el umbral de clasificación** según costes reales de FN y FP (ver notebook 4_Extra_credit.ipynb).
-3. **Priorizar Alemania (Cluster 0):** Acciones específicas de retención, investigación cualitativa y posible ajuste de producto/canal en ese mercado.
+2. **Optimizar el umbral de clasificación** según costes reales de FN y FP (tal como se demuestra en el ajuste de umbral del Avance 1).
+3. **Priorizar Alemania (Cluster de mayor riesgo):** Acciones específicas de retención, investigación cualitativa y posible ajuste de producto/canal en ese mercado.
 4. **Variables accionables:** Fomentar uso de productos (NumOfProducts 2–3), engagement (IsActiveMember) y atención a clientes con balance alto y edad avanzada.
-5. **Monitoreo:** Seguimiento de ROC-AUC, F1 y distribución de scores en producción; alertas si la distribución de churn o de features cambia (drift).
+5. **Monitoreo:** Seguimiento de ROC-AUC, PR-AUC, F1 y distribución de scores en producción; alertas si la distribución de churn o de features cambia (drift).
 6. **Cierre del ciclo:** Usar resultados de campañas de retención para reentrenar modelos y recalibrar umbrales de forma periódica.
 
 ---
 
 ## 5. Referencia a Materiales del Proyecto
 
-- **Avance 1:** `clase_03_regresion_logistica/notebooks/actividad_clase_03_regresion_logistica.ipynb`
-- **Avance 2:** `clase_06_optimizacion_modelos/notebooks/2_GradientBoosting_Optimizacion_RESUMEN.ipynb`
+- **Avance 1:** `clase_03_regresion_logistica/notebooks/1_EDA_RegresionLogistica.ipynb`
+- **Avance 2:** `clase_06_optimizacion_modelos/notebooks/2_GradientBoosting_Optimizacion.ipynb`
 - **Avance 3:** `clase_08_aprendizaje_no_supervisado_ii/notebooks/3_AprendizajeNoSupervisado.ipynb`
-- **Extra Credit (umbral y costes):** `clase_09_series_temporales/notebooks/4_Extra_credit.ipynb`
+- **Avance 4 (este documento):** `clase_09_series_temporales/docs/Reporte_Modelos.md`
 
 ---

@@ -30,13 +30,11 @@
 | Métrica | Cantidad | Detalles |
 |---------|----------|----------|
 | **Clases teórico-prácticas** | 10 | + 1 clase de consulta |
-| **Notebooks ejecutados** | 23 | Jupyter notebooks interactivos |
-| **Datasets analizados** | 20 | Casos reales de diferentes dominios |
-| **Algoritmos cubiertos** | 25+ | De regresión lineal a LSTM |
-| **Líneas de código** | ~15,000 | Entre todos los notebooks |
+| **Notebooks ejecutados** | 11 | 1 notebook interactivo por clase |
+| **Datasets analizados** | 8 | Casos de retail, banca, fintech, energía, movilidad y finanzas |
+| **Algoritmos cubiertos** | 15+ | De regresión lineal y logística a ensambles, clustering y LSTM |
+| **Avances Proyecto Integrador** | 4 | Clases 03, 06, 08 y reporte integrador en Clase 09 |
 | **Horas de contenido** | ~32h | Teoría + práctica |
-| **Scripts Python** | 3 | En clase_01 y clase_02 |
-| **Documentos de referencia** | 31 | Teoría, homeworks, guías |
 
 ### Tecnologías Dominadas
 

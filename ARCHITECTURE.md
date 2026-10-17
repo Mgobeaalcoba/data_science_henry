@@ -30,8 +30,10 @@ data_science_henry/
 │   ├── docs/             # guía de datasets del curso + resumen completo de la cursada
 │   └── notebooks/        # RESUMEN_TEMAS_CURSADA.ipynb
 │
+├── AGENTS.md             # mapa completo de clases, esquemas y reglas para agentes de IA
+├── .agents/skills/       # skill y script de auditoría/ejecución de notebooks (make audit / make execute)
 ├── requirements.txt      # única fuente de dependencias (pip + venv)
-├── Makefile               # 3 comandos: install, jupyter, clean
+├── Makefile              # comandos: install, jupyter, audit, execute, clean
 ├── README.md / QUICKSTART.md / ARCHITECTURE.md / CONTRIBUTING.md
 └── LICENSE
 ```
